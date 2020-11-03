@@ -1,10 +1,13 @@
 package com.example.ezyfood;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.ezyfood.adapters.ItemAdapter;
 import com.example.ezyfood.data.Drinks;
@@ -29,6 +32,8 @@ public class ItemListActivity extends AppCompatActivity {
 
         this.getExtraData();
         this.initComponents();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initComponents() {
@@ -37,6 +42,25 @@ public class ItemListActivity extends AppCompatActivity {
         rcItems.setLayoutManager(new LinearLayoutManager(this));
         rcItems.setHasFixedSize(true);
         rcItems.setAdapter(new ItemAdapter(displayedItems));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.menu_cart:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void getExtraData() {

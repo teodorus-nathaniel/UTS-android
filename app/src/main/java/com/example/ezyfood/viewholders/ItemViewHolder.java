@@ -2,6 +2,7 @@ package com.example.ezyfood.viewholders;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +20,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     Context ctx;
     Class target;
 
-    int index;
     Item item;
 
     CardView card;
@@ -31,7 +31,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         this.ctx = ctx;
         this.target = target;
-        this.index = index;
         card = itemView.findViewById(R.id.cv_item);
         image = itemView.findViewById(R.id.iv_item);
         name = itemView.findViewById(R.id.tv_name);
@@ -40,7 +39,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
 
     public void setItem(final Item item) {
         this.item = item;
-        image.setBackground(ctx.getResources().getDrawable(item.getImageId(), ctx.getTheme()));
+        image.setImageResource(item.getImageId());
         name.setText(item.getName());
         price.setText(PriceFormatter.format(item.getPrice()));
 

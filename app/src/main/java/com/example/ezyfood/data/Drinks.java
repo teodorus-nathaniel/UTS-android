@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class Drinks {
     public static ArrayList<Item> getDrinks() {
         ArrayList<Item> drinks = new ArrayList<>();
-        drinks.add(new Drink(R.drawable.ic_fried_rice, "Mineral Water", 6000));
-        drinks.add(new Drink(R.drawable.ic_fried_rice, "Orange Juice", 15000));
-        drinks.add(new Drink(R.drawable.ic_fried_rice, "Thai Tea", 25000));
+        drinks.add(new Drink(R.drawable.ic_water, "Mineral Water", 6000));
+        drinks.add(new Drink(R.drawable.ic_orange_juice, "Orange Juice", 15000));
+        drinks.add(new Drink(R.drawable.ic_thai_tea, "Thai Tea", 25000));
 
         return drinks;
     }
