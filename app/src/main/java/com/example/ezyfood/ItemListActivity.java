@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.ezyfood.adapters.ItemAdapter;
 import com.example.ezyfood.data.Drinks;
@@ -23,7 +25,8 @@ public class ItemListActivity extends AppCompatActivity {
     private ItemType type;
     private ArrayList<Item> displayedItems;
 
-    private RecyclerView rcItems;
+    private RecyclerView rvItems;
+    private TextView tvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,26 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        rcItems = findViewById(R.id.rc_items);
+        tvTitle = findViewById(R.id.tv_title);
+        String title = "";
+        switch (type) {
+            case FOOD:
+                title = "Foods";
+                break;
+            case DRINK:
+                title = "Drinks";
+                break;
+            case SNACK:
+                title = "Snacks";
+                break;
+        }
+        tvTitle.setText(title);
 
-        rcItems.setLayoutManager(new LinearLayoutManager(this));
-        rcItems.setHasFixedSize(true);
-        rcItems.setAdapter(new ItemAdapter(displayedItems));
+        rvItems = findViewById(R.id.rv_items);
+
+        rvItems.setLayoutManager(new LinearLayoutManager(this));
+        rvItems.setHasFixedSize(true);
+        rvItems.setAdapter(new ItemAdapter(displayedItems));
     }
 
     @Override
@@ -57,6 +75,7 @@ public class ItemListActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.menu_cart:
+                startActivity(new Intent(this, CartActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

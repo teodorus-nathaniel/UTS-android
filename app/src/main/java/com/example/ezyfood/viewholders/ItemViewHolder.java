@@ -17,14 +17,12 @@ import com.example.ezyfood.utils.PriceFormatter;
 public class ItemViewHolder extends RecyclerView.ViewHolder {
     public static final String ITEM = "ITEM";
 
-    Context ctx;
-    Class target;
+    private Context ctx;
+    private Class target;
 
-    Item item;
-
-    CardView card;
-    ImageView image;
-    TextView name, price;
+    private CardView card;
+    private ImageView image;
+    private TextView name, price;
 
     public ItemViewHolder(Context ctx, View itemView, Class target) {
         super(itemView);
@@ -38,7 +36,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setItem(final Item item) {
-        this.item = item;
         image.setImageResource(item.getImageId());
         name.setText(item.getName());
         price.setText(PriceFormatter.format(item.getPrice()));
