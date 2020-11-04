@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.ezyfood.enums.ItemType;
 
@@ -38,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
         btnFood.setOnClickListener(new ButtonClickListener(this, ItemListActivity.class, ItemType.FOOD));
         btnDrink.setOnClickListener(new ButtonClickListener(this, ItemListActivity.class, ItemType.DRINK));
         btnSnack.setOnClickListener(new ButtonClickListener(this, ItemListActivity.class, ItemType.SNACK));
-        btnTopUp.setOnClickListener(new ButtonClickListener(this, ItemListActivity.class, ItemType.TOPUP));
+        btnTopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Feature not implemented yet!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
